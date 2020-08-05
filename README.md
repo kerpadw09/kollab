@@ -1,21 +1,13 @@
-# Vue Starter Template
+# Kollab
 
-## Included Packages
+> Restaurant Dashboard
 
-- @fortawesome/fontawesome-free
-- axios
-- babel-polyfill
-- bootstrap
-- jquery
-- moment
-- node-sass
-- popper.js
-- sass-loader
-- style-loader
-- vue
-- vue-router
-- vuex
+#### Install dependencies
+```
+npm install 
+```
 
-## Demo
-
-[vue_starter_template](https://vue-starter-template.surge.sh/)
+#### Start development server
+```
+npm start
+```
