@@ -4,5 +4,15 @@
 @import './medium.scss';
 
 #header {
-  padding-bottom: 60px;
+  #logo {
+    height: 20px;
+    width: 60px;
+  }
+  .badge {
+    top: -13px !important;
+    left: -11px !important;
+  }
+  #question-dialog {
+    height: 40px;
+  }
 }
