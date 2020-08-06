@@ -1,0 +1,13 @@
+@import '../../variables/colors.scss';
+@import './extra_small.scss';
+@import './small.scss';
+@import './medium.scss';
+
+#analytics {
+    #pie-chart {
+        height: 20px;
+    }
+    #content {
+        background-color: $color-whisper;
+    }
+}
