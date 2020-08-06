@@ -4,14 +4,20 @@
   margin: 0;
   padding: 0;
 }
+body {
+  font-size: 13px;
+}
 .debugger {
   border: 1px solid red;
 }
-.bg-catskill-white {
-  background-color: $color-catskill-white;
+.bg-whisper {
+  background-color: $color-whisper;
 }
-.text-seashell {
-  color: $color-seashell;
+.text-whisper {
+  color: $color-whisper;
+}
+.text-spunpearl {
+  color: $color-spunpearl;
 }
 .fa-1-5 {
   font-size: 1.5em;
@@ -21,4 +27,9 @@
   height: 30px;
   margin-left: 20px;
   margin-right: 20px;
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1190px !important;
+  }
 }
