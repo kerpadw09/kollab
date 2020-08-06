@@ -6,12 +6,16 @@ import store from './store'
 import 'bootstrap'
 import '@fortawesome/fontawesome-free/css/all.css'
 import moment from 'moment'
+import pagination from 'vuejs-uib-pagination'
 
 // Config
 Vue.config.productionTip = false
 
 // Prototypes
 Vue.prototype.moment = moment
+
+// Plugins
+Vue.use(pagination)
 
 /* eslint-disable no-new */
 new Vue({

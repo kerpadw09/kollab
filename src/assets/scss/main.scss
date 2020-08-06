@@ -36,6 +36,9 @@
 .text-spunpearl {
   color: $color-spunpearl;
 }
+.text-algae-green {
+  color: $color-algae-green;
+}
 .fa-1-5 {
   font-size: 1.5em;
 }
@@ -44,6 +47,27 @@
   height: 30px;
   margin-left: 20px;
   margin-right: 20px;
+}
+.pagination-page a{
+  color: $color-spunpearl;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+}
+.pagination-page .active {
+  font-weight: bold;
+}
+.pagination-prev a {
+  color: $color-spunpearl;
+  font-size: 30px;
+  line-height: 20px;
+}
+.pagination-next a {
+  color: $color-spunpearl;
+  font-size: 30px;
+  line-height: 20px;
+}
+.pagination > .disabled a {
+  color: $color-whisper;
 }
 @media (min-width: 1200px) {
   .container {
