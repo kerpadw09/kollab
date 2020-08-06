@@ -4,14 +4,31 @@
   margin: 0;
   padding: 0;
 }
-body {
-  font-size: 13px;
-}
 .debugger {
   border: 1px solid red;
 }
 .bg-whisper {
   background-color: $color-whisper;
+}
+.badge-malibu {
+  background-color: $color-malibu;
+  color: white;
+}
+.badge-algae-green {
+  background-color: $color-algae-green;
+  color: white;
+}
+.badge-manhattan {
+  background-color: $color-manhattan;
+  color: white;
+}
+.badge-biloba-flower {
+  background-color: $color-biloba-flower;
+  color: white;
+}
+.badge-ecstasy {
+  background-color: $color-ecstasy;
+  color: white;
 }
 .text-whisper {
   color: $color-whisper;
