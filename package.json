@@ -1,7 +1,7 @@
 {
-  "name": "vue_starter_template",
+  "name": "kollab",
   "version": "1.0.0",
-  "description": "Vue Starter Template",
+  "description": "Restaurant Dashboard",
   "author": "kerpadw09",
   "private": true,
   "scripts": {
