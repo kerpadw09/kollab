@@ -45,7 +45,7 @@
             </div>
             <button type="button" class="btn btn-link text-decoration-none px-0 ml-2">
               <i class="far fa-bell fa-1-5 text-muted" aria-hidden="true"></i>
-              <span class="badge badge-warning text-white">3</span>
+              <span class="badge badge-ecstasy text-white">3</span>
             </button>
             <span class="divider"></span>
             <img src="~img/question-dialog.jpeg" id="question-dialog" alt="Icon" />
