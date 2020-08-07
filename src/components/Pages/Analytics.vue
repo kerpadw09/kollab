@@ -14,7 +14,11 @@
     </div>
     <div class="row px-3 py-5">
       <div class="col-md-3 mb-4 mb-md-0">
-        <div class="card">
+        <div
+          class="card"
+          :class="{'active-border': activeStat === 'sales'}"
+          @click="activeStat = 'sales'"
+        >
           <div class="card-body">
             <p class="card-title">
               <span class="h5">Sales</span>
@@ -58,7 +62,11 @@
         </div>
       </div>
       <div class="col-md-3 mb-4 mb-md-0">
-        <div class="card">
+        <div
+          class="card"
+          :class="{'active-border': activeStat === 'engagement'}"
+          @click="activeStat = 'engagement'"
+        >
           <div class="card-body">
             <h5 class="card-title">Engagement</h5>
             <div class="d-flex flex-row justify-content-between">
@@ -85,7 +93,11 @@
         </div>
       </div>
       <div class="col-md-3 mb-4 mb-md-0">
-        <div class="card">
+        <div
+          class="card"
+          :class="{'active-border': activeStat === 'acquisition'}"
+          @click="activeStat = 'acquisition'"
+        >
           <div class="card-body">
             <h5 class="card-title">Acquisition</h5>
             <div class="d-flex flex-row justify-content-between">
@@ -111,7 +123,11 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card">
+        <div
+          class="card"
+          :class="{'active-border': activeStat === 'rewards program'}"
+          @click="activeStat = 'rewards program'"
+        >
           <div class="card-body">
             <h5 class="card-title">Rewards Program</h5>
             <div class="d-flex flex-row justify-content-between">
@@ -146,7 +162,7 @@
       </div>
       <div class="col-md-3">
         <DatePicker mode="range" v-model="range" :masks="{ input: 'D MMM YYYY' }" />
-        <i class="fa fa-calendar-alt text-whisper" aria-hidden="true"></i>
+        <i class="fa fa-calendar-alt text-whisper date-picker-icon" aria-hidden="true"></i>
       </div>
     </div>
     <div class="row px-3 py-4">
@@ -354,7 +370,8 @@ export default {
         currentPage: 1
       },
       range: {},
-      lastDays: 7
+      lastDays: 7,
+      activeStat: null
     }
   },
   methods: {
