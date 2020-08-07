@@ -153,7 +153,7 @@
         </div>
       </div>
     </div>
-    <div class="row px-3 py-4">
+    <div class="row px-3 py-3">
       <div class="col-md-2 mb-3 mb-md-0">
         <select class="custom-select" v-model="lastDays">
           <option value="7">Last 7 Days</option>
@@ -163,6 +163,45 @@
       <div class="col-md-3">
         <DatePicker mode="range" v-model="range" :masks="{ input: 'D MMM YYYY' }" />
         <i class="fa fa-calendar-alt text-whisper date-picker-icon" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="row px-3 py-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header py-3">
+            <div class="row">
+              <div class="col-md-8">
+                <span class="h5">Sales Overview</span>
+                <i
+                  class="fa fa-question-circle text-whisper ml-2"
+                  aria-hidden="true"
+                  data-toggle="tooltip"
+                  title="Information"
+                ></i>
+              </div>
+              <div class="col-md-2 text-right">
+                <select class="custom-select" v-model="transactionType">
+                  <option value="0">All Transactions</option>
+                  <option value="1">Sales</option>
+                  <option value="2">Revenue</option>
+                </select>
+              </div>
+              <div class="col-md-2 text-right">
+                <select class="custom-select" v-model="branch">
+                  <option value="0">All Branches</option>
+                  <option value="1">Makati</option>
+                  <option value="2">BGC Taguig</option>
+                  <option value="3">Mall of Asia, Pasay</option>
+                  <option value="4">Quezon City</option>
+                  <option value="5">Greenhills</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0">
+            <BarChart :chart-data="chartData" :chart-options="chartOptions" :styles="chartStyles" />
+          </div>
+        </div>
       </div>
     </div>
     <div class="row px-3 py-4">
@@ -275,7 +314,7 @@
                 <tr>
                   <th scope="col" class="border-top-0"></th>
                   <th scope="col" class="border-top-0">
-                    <span class="text-spunpearl">Branch</span>
+                    <span class="text-spunpearl">Badge</span>
                   </th>
                   <th scope="col" class="text-right border-top-0">
                     <span class="text-spunpearl">
@@ -289,7 +328,7 @@
               <tbody class="text-secondary font-weight-bold">
                 <tr>
                   <td>1.</td>
-                  <td>Makati</td>
+                  <td>Reward 1</td>
                   <td class="text-right">5,000.00</td>
                   <td class="text-right">
                     20%
@@ -298,7 +337,7 @@
                 </tr>
                 <tr>
                   <td>2.</td>
-                  <td>BGC Taguig</td>
+                  <td>Reward 2</td>
                   <td class="text-right">4,000.00</td>
                   <td class="text-right">
                     10.52%
@@ -307,7 +346,7 @@
                 </tr>
                 <tr>
                   <td>3.</td>
-                  <td>Mall of Asia, Pasay</td>
+                  <td>Reward 3</td>
                   <td class="text-right">3,000.00</td>
                   <td class="text-right">
                     8.39%
@@ -316,7 +355,7 @@
                 </tr>
                 <tr>
                   <td>4.</td>
-                  <td>Quezon City</td>
+                  <td>Reward 4</td>
                   <td class="text-right">2,000.00</td>
                   <td class="text-right">
                     5%
@@ -325,7 +364,7 @@
                 </tr>
                 <tr>
                   <td>5.</td>
-                  <td>Greenhills</td>
+                  <td>Reward 5</td>
                   <td class="text-right">1,000.00</td>
                   <td class="text-right">
                     2%
@@ -357,12 +396,14 @@
 <script>
 import moment from 'moment'
 import DatePicker from 'v-calendar/lib/components/date-picker.umd'
+import BarChart from '@/components/Globals/BarChart'
 export default {
   name: 'Analytics',
   components: {
-    DatePicker
+    DatePicker,
+    BarChart
   },
-  data () {
+  data() {
     return {
       totalItems: 50,
       maxSize: 3,
@@ -371,23 +412,71 @@ export default {
       },
       range: {},
       lastDays: 7,
-      activeStat: null
+      activeStat: null,
+      chartData: {
+        labels: ['August 1', 'August 2', 'August 3', 'August 4', 'August 5', 'August 6', 'August 7'],
+        datasets: [
+          {
+            label: 'Sales',
+            backgroundColor: '#7DA2F9',
+            data: [18000, 19000, 20000, 19000, 19500, 21000, 20000],
+            categoryPercentage: 1.0,
+            barPercentage: 0.5
+          },
+          {
+            label: 'Revenue',
+            backgroundColor: '#8EDDBB',
+            data: [16000, 15000, 16000, 15500, 16000, 17000, 18000],
+            categoryPercentage: 1.0,
+            barPercentage: 0.5
+          }
+        ]
+      },
+      chartOptions: {
+        width: 800,
+        responsive: true,
+        maintainAspectRatio: false,
+        tooltips: {
+          mode: 'index',
+          intersect: false
+        },
+        hover: {
+          mode: 'index',
+          intersect: false
+        },
+        legend: {
+          display: true,
+          position: 'top',
+          align: 'end',
+          labels: {
+            boxWidth: 15
+          }
+        },
+        tooltips: {
+          align: 'center'
+        }
+      },
+      chartStyles: {
+        backgroundColor: 'white'
+      },
+      transactionType: 0,
+      branch: 0
     }
   },
   methods: {
-    setRange (days) {
+    setRange(days) {
       this.range.start = new Date(moment().subtract(days, 'days').format('YYYY-MM-DDTHH:mm:ssZ'))
       this.range.end = new Date()
     }
   },
   watch: {
-    lastDays (days) {
+    lastDays(days) {
       this.range = {}
       this.setRange(days)
     }
   },
-  created () {
-    this.setRange(this.lastDays)
+  created() {
+    this.setRange(this.lastDays - 1)
   }
 }
 </script>

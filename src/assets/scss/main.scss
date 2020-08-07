@@ -73,8 +73,6 @@
   background-image: url('/static/img/chevron-down.svg');
   background-size: 15px;
 }
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1190px !important;
-  }
+.card {
+  cursor: pointer;
 }
