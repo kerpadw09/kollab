@@ -21,6 +21,7 @@
     "popper.js": "^1.15.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "v-calendar": "^1.0.8",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuejs-uib-pagination": "^1.0.6",

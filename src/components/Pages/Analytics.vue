@@ -138,13 +138,16 @@
       </div>
     </div>
     <div class="row px-3 py-4">
-      <div class="col-md-2">
-        <select class="custom-select">
-          <option selected value="7">Last 7 Days</option>
+      <div class="col-md-2 mb-3 mb-md-0">
+        <select class="custom-select" v-model="lastDays">
+          <option value="7">Last 7 Days</option>
           <option value="30">Last 30 Days</option>
         </select>
       </div>
-      <div class="col-md-4"></div>
+      <div class="col-md-3">
+        <DatePicker mode="range" v-model="range" :masks="{ input: 'D MMM YYYY' }" />
+        <i class="fa fa-calendar-alt text-whisper" aria-hidden="true"></i>
+      </div>
     </div>
     <div class="row px-3 py-4">
       <div class="col-md-6">
@@ -336,16 +339,38 @@
 </template>
 
 <script>
+import moment from 'moment'
+import DatePicker from 'v-calendar/lib/components/date-picker.umd'
 export default {
   name: 'Analytics',
-  data() {
+  components: {
+    DatePicker
+  },
+  data () {
     return {
       totalItems: 50,
       maxSize: 3,
       pagination: {
         currentPage: 1
-      }
+      },
+      range: {},
+      lastDays: 7
     }
+  },
+  methods: {
+    setRange (days) {
+      this.range.start = new Date(moment().subtract(days, 'days').format('YYYY-MM-DDTHH:mm:ssZ'))
+      this.range.end = new Date()
+    }
+  },
+  watch: {
+    lastDays (days) {
+      this.range = {}
+      this.setRange(days)
+    }
+  },
+  created () {
+    this.setRange(this.lastDays)
   }
 }
 </script>
