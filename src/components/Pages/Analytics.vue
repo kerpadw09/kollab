@@ -138,6 +138,15 @@
       </div>
     </div>
     <div class="row px-3 py-4">
+      <div class="col-md-2">
+        <select class="custom-select">
+          <option selected value="7">Last 7 Days</option>
+          <option value="30">Last 30 Days</option>
+        </select>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+    <div class="row px-3 py-4">
       <div class="col-md-6">
         <div class="card">
           <div class="card-header border-bottom-0 bg-light py-3">
@@ -329,7 +338,7 @@
 <script>
 export default {
   name: 'Analytics',
-  data () {
+  data() {
     return {
       totalItems: 50,
       maxSize: 3,
