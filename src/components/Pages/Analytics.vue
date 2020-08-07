@@ -1,7 +1,7 @@
 <template>
   <div id="analytics" class="container-fluid bg-whisper">
-    <div class="row py-3 bg-white">
-      <div class="col-12 px-5">
+    <div class="row px-lg-3 py-3 bg-white">
+      <div class="col-12">
         <img src="~img/pie-chart.svg" id="pie-chart" class="mb-2 mr-2" alt="Icon" />
         <span class="h4">Analytics</span>
         <i
@@ -12,8 +12,8 @@
         ></i>
       </div>
     </div>
-    <div class="row px-3 py-5">
-      <div class="col-md-3 mb-4 mb-md-0">
+    <div class="row px-lg-3 py-5">
+      <div class="col-lg-3 mb-4 mb-lg-0">
         <div
           class="card"
           :class="{'active-border': activeStat === 'sales'}"
@@ -61,7 +61,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 mb-4 mb-md-0">
+      <div class="col-lg-3 mb-4 mb-lg-0">
         <div
           class="card"
           :class="{'active-border': activeStat === 'engagement'}"
@@ -92,7 +92,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 mb-4 mb-md-0">
+      <div class="col-lg-3 mb-4 mb-lg-0">
         <div
           class="card"
           :class="{'active-border': activeStat === 'acquisition'}"
@@ -122,7 +122,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-lg-3">
         <div
           class="card"
           :class="{'active-border': activeStat === 'rewards program'}"
@@ -153,24 +153,24 @@
         </div>
       </div>
     </div>
-    <div class="row px-3 py-3">
-      <div class="col-md-2 mb-3 mb-md-0">
+    <div class="row px-lg-3 py-3">
+      <div class="col-lg-2 mb-3 mb-lg-0">
         <select class="custom-select" v-model="lastDays">
           <option value="7">Last 7 Days</option>
           <option value="30">Last 30 Days</option>
         </select>
       </div>
-      <div class="col-md-3">
+      <div class="col-lg-3">
         <DatePicker mode="range" v-model="range" :masks="{ input: 'D MMM YYYY' }" />
         <i class="fa fa-calendar-alt text-whisper date-picker-icon" aria-hidden="true"></i>
       </div>
     </div>
-    <div class="row px-3 py-4">
+    <div class="row px-lg-3 py-4">
       <div class="col-12">
         <div class="card">
           <div class="card-header py-3">
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-lg-8">
                 <span class="h5">Sales Overview</span>
                 <i
                   class="fa fa-question-circle text-whisper ml-2"
@@ -179,14 +179,14 @@
                   title="Information"
                 ></i>
               </div>
-              <div class="col-md-2 text-right">
+              <div class="col-lg-2 text-right mt-3 mt-lg-0">
                 <select class="custom-select" v-model="transactionType">
                   <option value="0">All Transactions</option>
                   <option value="1">Sales</option>
                   <option value="2">Revenue</option>
                 </select>
               </div>
-              <div class="col-md-2 text-right">
+              <div class="col-lg-2 text-right mt-3 mt-lg-0">
                 <select class="custom-select" v-model="branch">
                   <option value="0">All Branches</option>
                   <option value="1">Makati</option>
@@ -204,8 +204,8 @@
         </div>
       </div>
     </div>
-    <div class="row px-3 py-4">
-      <div class="col-md-6">
+    <div class="row px-lg-3 py-4">
+      <div class="col-lg-6">
         <div class="card">
           <div class="card-header border-bottom-0 bg-light py-3">
             <span class="h5">Branch Performance</span>
@@ -224,10 +224,9 @@
                   <th scope="col" class="border-top-0">
                     <span class="text-spunpearl">Branch</span>
                   </th>
-                  <th scope="col" class="text-right border-top-0">
+                  <th scope="col" class="text-lg-right border-top-0">
                     <span class="text-spunpearl">
-                      Total Sales (
-                      <img src="~img/peso.svg" class="peso-small" alt="Icon" /> )
+                      Total Sales  (<img src="~img/peso.svg" class="peso-small" alt="Icon" />)
                     </span>
                   </th>
                   <th scope="col" class="border-top-0"></th>
@@ -237,46 +236,46 @@
                 <tr>
                   <td>1.</td>
                   <td>Makati</td>
-                  <td class="text-right">5,000.00</td>
-                  <td class="text-right">
+                  <td class="text-lg-right">5,000.00</td>
+                  <td class="text-lg-right">
                     20%
-                    <i class="fa fa-arrow-up text-algae-green ml-2" aria-hidden="true"></i>
+                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
                   </td>
                 </tr>
                 <tr>
                   <td>2.</td>
                   <td>BGC Taguig</td>
-                  <td class="text-right">4,000.00</td>
-                  <td class="text-right">
+                  <td class="text-lg-right">4,000.00</td>
+                  <td class="text-lg-right">
                     10.52%
-                    <i class="fa fa-arrow-up text-algae-green ml-2" aria-hidden="true"></i>
+                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
                   </td>
                 </tr>
                 <tr>
                   <td>3.</td>
                   <td>Mall of Asia, Pasay</td>
-                  <td class="text-right">3,000.00</td>
-                  <td class="text-right">
+                  <td class="text-lg-right">3,000.00</td>
+                  <td class="text-lg-right">
                     8.39%
-                    <i class="fa fa-arrow-up text-algae-green ml-2" aria-hidden="true"></i>
+                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
                   </td>
                 </tr>
                 <tr>
                   <td>4.</td>
                   <td>Quezon City</td>
-                  <td class="text-right">2,000.00</td>
-                  <td class="text-right">
+                  <td class="text-lg-right">2,000.00</td>
+                  <td class="text-lg-right">
                     5%
-                    <i class="fa fa-arrow-down text-spunpearl ml-2" aria-hidden="true"></i>
+                    <i class="fa fa-arrow-down ml-2 d-block d-md-inline text-spunpearl" aria-hidden="true"></i>
                   </td>
                 </tr>
                 <tr>
                   <td>5.</td>
                   <td>Greenhills</td>
-                  <td class="text-right">1,000.00</td>
-                  <td class="text-right">
+                  <td class="text-lg-right">1,000.00</td>
+                  <td class="text-lg-right">
                     2%
-                    <i class="fa fa-arrow-up text-algae-green ml-2" aria-hidden="true"></i>
+                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
                   </td>
                 </tr>
               </tbody>
@@ -297,7 +296,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-lg-6 mt-3 mt-lg-0">
         <div class="card">
           <div class="card-header border-bottom-0 bg-light py-3">
             <span class="h5">Rewards Performance</span>
@@ -316,10 +315,9 @@
                   <th scope="col" class="border-top-0">
                     <span class="text-spunpearl">Badge</span>
                   </th>
-                  <th scope="col" class="text-right border-top-0">
+                  <th scope="col" class="text-lg-right border-top-0">
                     <span class="text-spunpearl">
-                      Total Sales (
-                      <img src="~img/peso.svg" class="peso-small" alt="Icon" /> )
+                      Total Sales  (<img src="~img/peso.svg" class="peso-small" alt="Icon" />)
                     </span>
                   </th>
                   <th scope="col" class="border-top-0"></th>
@@ -329,46 +327,46 @@
                 <tr>
                   <td>1.</td>
                   <td>Reward 1</td>
-                  <td class="text-right">5,000.00</td>
-                  <td class="text-right">
+                  <td class="text-lg-right">5,000.00</td>
+                  <td class="text-lg-right">
                     20%
-                    <i class="fa fa-arrow-up text-algae-green ml-2" aria-hidden="true"></i>
+                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
                   </td>
                 </tr>
                 <tr>
                   <td>2.</td>
                   <td>Reward 2</td>
-                  <td class="text-right">4,000.00</td>
-                  <td class="text-right">
+                  <td class="text-lg-right">4,000.00</td>
+                  <td class="text-lg-right">
                     10.52%
-                    <i class="fa fa-arrow-up text-algae-green ml-2" aria-hidden="true"></i>
+                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
                   </td>
                 </tr>
                 <tr>
                   <td>3.</td>
                   <td>Reward 3</td>
-                  <td class="text-right">3,000.00</td>
-                  <td class="text-right">
+                  <td class="text-lg-right">3,000.00</td>
+                  <td class="text-lg-right">
                     8.39%
-                    <i class="fa fa-arrow-up text-algae-green ml-2" aria-hidden="true"></i>
+                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
                   </td>
                 </tr>
                 <tr>
                   <td>4.</td>
                   <td>Reward 4</td>
-                  <td class="text-right">2,000.00</td>
-                  <td class="text-right">
+                  <td class="text-lg-right">2,000.00</td>
+                  <td class="text-lg-right">
                     5%
-                    <i class="fa fa-arrow-down text-spunpearl ml-2" aria-hidden="true"></i>
+                    <i class="fa fa-arrow-down ml-2 d-block d-md-inline text-spunpearl" aria-hidden="true"></i>
                   </td>
                 </tr>
                 <tr>
                   <td>5.</td>
                   <td>Reward 5</td>
-                  <td class="text-right">1,000.00</td>
-                  <td class="text-right">
+                  <td class="text-lg-right">1,000.00</td>
+                  <td class="text-lg-right">
                     2%
-                    <i class="fa fa-arrow-up text-algae-green ml-2" aria-hidden="true"></i>
+                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
                   </td>
                 </tr>
               </tbody>
@@ -403,7 +401,7 @@ export default {
     DatePicker,
     BarChart
   },
-  data() {
+  data () {
     return {
       totalItems: 50,
       maxSize: 3,
@@ -438,7 +436,8 @@ export default {
         maintainAspectRatio: false,
         tooltips: {
           mode: 'index',
-          intersect: false
+          intersect: false,
+          align: 'center'
         },
         hover: {
           mode: 'index',
@@ -451,9 +450,6 @@ export default {
           labels: {
             boxWidth: 15
           }
-        },
-        tooltips: {
-          align: 'center'
         }
       },
       chartStyles: {
@@ -464,18 +460,18 @@ export default {
     }
   },
   methods: {
-    setRange(days) {
+    setRange (days) {
       this.range.start = new Date(moment().subtract(days, 'days').format('YYYY-MM-DDTHH:mm:ssZ'))
       this.range.end = new Date()
     }
   },
   watch: {
-    lastDays(days) {
+    lastDays (days) {
       this.range = {}
       this.setRange(days)
     }
   },
-  created() {
+  created () {
     this.setRange(this.lastDays - 1)
   }
 }
