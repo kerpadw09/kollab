@@ -12,7 +12,7 @@
         ></i>
       </div>
     </div>
-    <div class="row px-lg-3 py-5">
+    <div class="row px-lg-3 py-5" v-if="stats">
       <div class="col-lg-3 mb-4 mb-lg-0">
         <div
           class="card"
@@ -33,8 +33,12 @@
               <div class="d-flex flex-column justify-content-center">
                 <span class="badge badge-pill badge-malibu py-2 px-3">
                   <span class="h6">
-                    20%
-                    <i class="fa fa-arrow-up ml-1" aria-hidden="true"></i>
+                    {{ stats.sales['change_percent'] }}%
+                    <i
+                      class="fa ml-1"
+                      :class="[stats.sales['change_type'] === 'increase' ? 'fa-arrow-up' : 'fa-arrow-down']"
+                      aria-hidden="true"
+                    ></i>
                   </span>
                 </span>
               </div>
@@ -42,12 +46,12 @@
                 <p class="text-spunpearl font-weight-bold mb-0">Lifetime Sales</p>
                 <p>
                   <img src="~img/peso.svg" class="peso" alt="Icon" />
-                  <span class="h5 text-secondary">175,000</span>
+                  <span class="h5 text-secondary">{{ stats.sales.lifetime | currency }}</span>
                 </p>
                 <p class="text-spunpearl font-weight-bold mb-0">Revenue Sales</p>
                 <p>
                   <img src="~img/peso.svg" class="peso" alt="Icon" />
-                  <span class="h5 text-secondary">170,000</span>
+                  <span class="h5 text-secondary">{{ stats.sales.revenue | currency }}</span>
                 </p>
               </div>
             </div>
@@ -56,7 +60,9 @@
             <span class="text-spunpearl font-weight-bold">Average Order Value</span>
             <span>
               <img src="~img/peso.svg" class="peso-small" alt="Icon" />
-              <span class="text-spunpearl font-weight-bold">1,000.00</span>
+              <span
+                class="text-spunpearl font-weight-bold"
+              >{{ stats.sales.average_order_value | currency }}</span>
             </span>
           </div>
         </div>
@@ -73,22 +79,28 @@
               <div class="d-flex flex-column justify-content-center">
                 <span class="badge badge-pill badge-algae-green py-2 px-3">
                   <span class="h6">
-                    20%
-                    <i class="fa fa-arrow-down ml-1" aria-hidden="true"></i>
+                    {{ stats.engagement['change_percent'] }}%
+                    <i
+                      class="fa ml-1"
+                      :class="[stats.engagement['change_type'] === 'increase' ? 'fa-arrow-up' : 'fa-arrow-down']"
+                      aria-hidden="true"
+                    ></i>
                   </span>
                 </span>
               </div>
               <div class="d-flex flex-column text-right">
                 <p class="text-spunpearl font-weight-bold mb-0">Lifetime SMS</p>
                 <p class="text-spunpearl font-weight-bold mb-0">Engagements</p>
-                <p class="h5 text-secondary">285</p>
+                <p class="h5 text-secondary">{{ stats.engagement['lifetime_sms'] }}</p>
                 <p class="text-spunpearl font-weight-bold mb-0">Daily Average</p>
-                <p class="h5 text-secondary">57</p>
+                <p class="h5 text-secondary">{{ stats.engagement['daily_average'] }}</p>
               </div>
             </div>
           </div>
           <div class="card-footer">
-            <span class="text-spunpearl font-weight-bold">20% decreease in 30 days</span>
+            <span
+              class="text-spunpearl font-weight-bold"
+            >{{ stats.engagement['change_percent'] }}% {{ stats.engagement['change_type'] }} in 30 days</span>
           </div>
         </div>
       </div>
@@ -104,21 +116,27 @@
               <div class="d-flex flex-column justify-content-center">
                 <span class="badge badge-pill badge-manhattan py-2 px-3">
                   <span class="h6">
-                    20%
-                    <i class="fa fa-arrow-up ml-1" aria-hidden="true"></i>
+                    {{ stats.acquisition['change_percent'] }}%
+                    <i
+                      class="fa ml-1"
+                      :class="[stats.acquisition['change_type'] === 'increase' ? 'fa-arrow-up' : 'fa-arrow-down']"
+                      aria-hidden="true"
+                    ></i>
                   </span>
                 </span>
               </div>
               <div class="d-flex flex-column text-right">
                 <p class="text-spunpearl font-weight-bold mb-0">Registered Users</p>
-                <p class="h5 text-secondary">285</p>
+                <p class="h5 text-secondary">{{ stats.acquisition['registered_users'] }}</p>
                 <p class="text-spunpearl font-weight-bold mb-0">Daily Average</p>
-                <p class="h5 text-secondary">57</p>
+                <p class="h5 text-secondary">{{ stats.acquisition['daily_average'] }}</p>
               </div>
             </div>
           </div>
           <div class="card-footer">
-            <span class="text-spunpearl font-weight-bold">20% increease in 30 days</span>
+            <span
+              class="text-spunpearl font-weight-bold"
+            >{{ stats.acquisition['change_percent'] }}% {{ stats.engagement['change_type'] }} in 30 days</span>
           </div>
         </div>
       </div>
@@ -134,21 +152,27 @@
               <div class="d-flex flex-column justify-content-center">
                 <span class="badge badge-pill badge-biloba-flower py-2 px-3">
                   <span class="h6">
-                    20%
-                    <i class="fa fa-arrow-up ml-1" aria-hidden="true"></i>
+                    {{ stats['rewards_program']['change_percent'] }}%
+                    <i
+                      class="fa ml-1"
+                      :class="[stats['rewards_program']['change_type'] === 'increase' ? 'fa-arrow-up' : 'fa-arrow-down']"
+                      aria-hidden="true"
+                    ></i>
                   </span>
                 </span>
               </div>
               <div class="d-flex flex-column text-right">
                 <p class="text-spunpearl font-weight-bold mb-0">Rewards Redeemed</p>
-                <p class="h5 text-secondary">175,000</p>
+                <p class="h5 text-secondary">{{ stats['rewards_program'].redeemed | currency }}</p>
                 <p class="text-spunpearl font-weight-bold mb-0">Issued Rewards</p>
-                <p class="h5 text-secondary">175,000</p>
+                <p class="h5 text-secondary">{{ stats['rewards_program'].issued | currency }}</p>
               </div>
             </div>
           </div>
           <div class="card-footer">
-            <span class="text-spunpearl font-weight-bold">20% increease in 30 days</span>
+            <span
+              class="text-spunpearl font-weight-bold"
+            >{{ stats['rewards_program']['change_percent'] }}% {{ stats['rewards_program']['change_type'] }} in 30 days</span>
           </div>
         </div>
       </div>
@@ -205,7 +229,7 @@
       </div>
     </div>
     <div class="row px-lg-3 py-4">
-      <div class="col-lg-6">
+      <div class="col-lg-6" v-if="branchPerformance">
         <div class="card">
           <div class="card-header border-bottom-0 bg-light py-3">
             <span class="h5">Branch Performance</span>
@@ -226,56 +250,26 @@
                   </th>
                   <th scope="col" class="text-lg-right border-top-0">
                     <span class="text-spunpearl">
-                      Total Sales  (<img src="~img/peso.svg" class="peso-small" alt="Icon" />)
+                      Total Sales (
+                      <img src="~img/peso.svg" class="peso-small" alt="Icon" />)
                     </span>
                   </th>
                   <th scope="col" class="border-top-0"></th>
                 </tr>
               </thead>
               <tbody class="text-secondary font-weight-bold">
-                <tr>
-                  <td>1.</td>
-                  <td>Makati</td>
-                  <td class="text-lg-right">5,000.00</td>
+                <tr v-for="(b, k) in branchPerformance" :key="k">
+                  <td>{{ k + 1 }}.</td>
+                  <td>{{ b.name }}</td>
+                  <td class="text-lg-right">{{ b.totalSales | currency }}</td>
                   <td class="text-lg-right">
-                    20%
-                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2.</td>
-                  <td>BGC Taguig</td>
-                  <td class="text-lg-right">4,000.00</td>
-                  <td class="text-lg-right">
-                    10.52%
-                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3.</td>
-                  <td>Mall of Asia, Pasay</td>
-                  <td class="text-lg-right">3,000.00</td>
-                  <td class="text-lg-right">
-                    8.39%
-                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4.</td>
-                  <td>Quezon City</td>
-                  <td class="text-lg-right">2,000.00</td>
-                  <td class="text-lg-right">
-                    5%
-                    <i class="fa fa-arrow-down ml-2 d-block d-md-inline text-spunpearl" aria-hidden="true"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>5.</td>
-                  <td>Greenhills</td>
-                  <td class="text-lg-right">1,000.00</td>
-                  <td class="text-lg-right">
-                    2%
-                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
+                    {{ b.changePercent }}%
+                    <i class="fa ml-2 d-block d-md-inline" aria-hidden="true"></i>
+                    <i
+                      class="fa ml-1"
+                      :class="[b.changeType === 'increase' ? 'fa-arrow-up text-algae-green' : 'fa-arrow-down text-spunpearl']"
+                      aria-hidden="true"
+                    ></i>
                   </td>
                 </tr>
               </tbody>
@@ -296,7 +290,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6 mt-3 mt-lg-0">
+      <div class="col-lg-6 mt-3 mt-lg-0" v-if="rewardsPerformance">
         <div class="card">
           <div class="card-header border-bottom-0 bg-light py-3">
             <span class="h5">Rewards Performance</span>
@@ -317,56 +311,26 @@
                   </th>
                   <th scope="col" class="text-lg-right border-top-0">
                     <span class="text-spunpearl">
-                      Total Sales  (<img src="~img/peso.svg" class="peso-small" alt="Icon" />)
+                      Total Sales (
+                      <img src="~img/peso.svg" class="peso-small" alt="Icon" />)
                     </span>
                   </th>
                   <th scope="col" class="border-top-0"></th>
                 </tr>
               </thead>
               <tbody class="text-secondary font-weight-bold">
-                <tr>
-                  <td>1.</td>
-                  <td>Reward 1</td>
-                  <td class="text-lg-right">5,000.00</td>
+                                <tr v-for="(b, k) in branchPerformance" :key="k">
+                  <td>{{ k + 1 }}.</td>
+                  <td>{{ b.name }}</td>
+                  <td class="text-lg-right">{{ b.totalSales | currency }}</td>
                   <td class="text-lg-right">
-                    20%
-                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2.</td>
-                  <td>Reward 2</td>
-                  <td class="text-lg-right">4,000.00</td>
-                  <td class="text-lg-right">
-                    10.52%
-                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3.</td>
-                  <td>Reward 3</td>
-                  <td class="text-lg-right">3,000.00</td>
-                  <td class="text-lg-right">
-                    8.39%
-                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4.</td>
-                  <td>Reward 4</td>
-                  <td class="text-lg-right">2,000.00</td>
-                  <td class="text-lg-right">
-                    5%
-                    <i class="fa fa-arrow-down ml-2 d-block d-md-inline text-spunpearl" aria-hidden="true"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>5.</td>
-                  <td>Reward 5</td>
-                  <td class="text-lg-right">1,000.00</td>
-                  <td class="text-lg-right">
-                    2%
-                    <i class="fa fa-arrow-up ml-2 d-block d-md-inline text-algae-green" aria-hidden="true"></i>
+                    {{ b.changePercent }}%
+                    <i class="fa ml-2 d-block d-md-inline" aria-hidden="true"></i>
+                    <i
+                      class="fa ml-1"
+                      :class="[b.changeType === 'increase' ? 'fa-arrow-up text-algae-green' : 'fa-arrow-down text-spunpearl']"
+                      aria-hidden="true"
+                    ></i>
                   </td>
                 </tr>
               </tbody>
@@ -395,6 +359,7 @@
 import moment from 'moment'
 import DatePicker from 'v-calendar/lib/components/date-picker.umd'
 import BarChart from '@/components/Globals/BarChart'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Analytics',
   components: {
@@ -460,9 +425,27 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'getAnalyticsStats',
+      'getAnalyticsBranchPerformance',
+      'getAnalyticsRewardsPerformance'
+    ]),
     setRange (days) {
       this.range.start = new Date(moment().subtract(days, 'days').format('YYYY-MM-DDTHH:mm:ssZ'))
       this.range.end = new Date()
+    }
+  },
+  computed: {
+    ...mapState({
+      stats: ({ analytics }) => analytics.stats,
+      branchPerformance: ({ analytics }) => analytics.branchPerformance,
+      rewardsPerformance: ({ analytics }) => analytics.rewardsPerformance
+    })
+  },
+  filters: {
+    currency (value) {
+      if (!value) return 0
+      return value.toLocaleString()
     }
   },
   watch: {
@@ -473,6 +456,14 @@ export default {
   },
   created () {
     this.setRange(this.lastDays - 1)
+    this.$root.$emit('showLoader', true)
+    Promise.all([
+      this.getAnalyticsStats(),
+      this.getAnalyticsBranchPerformance(),
+      this.getAnalyticsRewardsPerformance()
+    ]).then(() => {
+      this.$root.$emit('showLoader', false)
+    })
   }
 }
 </script>
