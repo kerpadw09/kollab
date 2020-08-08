@@ -3,7 +3,7 @@
     <div class="row px-lg-3 py-3 bg-white">
       <div class="col-12">
         <img src="~img/pie-chart.svg" id="pie-chart" class="mb-2 mr-2" alt="Icon" />
-        <span class="h4">Analytics</span>
+        <span class="h3">Analytics</span>
         <i
           class="fa fa-question-circle text-whisper ml-2"
           aria-hidden="true"
@@ -186,7 +186,7 @@
       </div>
       <div class="col-lg-3">
         <DatePicker mode="range" v-model="range" :masks="{ input: 'D MMM YYYY' }" />
-        <i class="fa fa-calendar-alt text-whisper date-picker-icon" aria-hidden="true"></i>
+        <i class="fa fa-calendar-alt text-muted date-picker-icon" aria-hidden="true"></i>
       </div>
     </div>
     <div class="row px-lg-3 py-4">
@@ -210,14 +210,10 @@
                   <option value="2">Revenue</option>
                 </select>
               </div>
-              <div class="col-lg-2 text-right mt-3 mt-lg-0">
+              <div class="col-lg-2 text-right mt-3 mt-lg-0" v-if="branchPerformance">
                 <select class="custom-select" v-model="branch">
                   <option value="0">All Branches</option>
-                  <option value="1">Makati</option>
-                  <option value="2">BGC Taguig</option>
-                  <option value="3">Mall of Asia, Pasay</option>
-                  <option value="4">Quezon City</option>
-                  <option value="5">Greenhills</option>
+                  <option :value="k" v-for="(b, k) in branchPerformance" :key="k">{{ b.name }}</option>
                 </select>
               </div>
             </div>
@@ -319,16 +315,16 @@
                 </tr>
               </thead>
               <tbody class="text-secondary font-weight-bold">
-                                <tr v-for="(b, k) in branchPerformance" :key="k">
+                <tr v-for="(r, k) in rewardsPerformance" :key="k">
                   <td>{{ k + 1 }}.</td>
-                  <td>{{ b.name }}</td>
-                  <td class="text-lg-right">{{ b.totalSales | currency }}</td>
+                  <td>{{ r.name }}</td>
+                  <td class="text-lg-right">{{ r.totalSales | currency }}</td>
                   <td class="text-lg-right">
-                    {{ b.changePercent }}%
+                    {{ r.changePercent }}%
                     <i class="fa ml-2 d-block d-md-inline" aria-hidden="true"></i>
                     <i
                       class="fa ml-1"
-                      :class="[b.changeType === 'increase' ? 'fa-arrow-up text-algae-green' : 'fa-arrow-down text-spunpearl']"
+                      :class="[r.changeType === 'increase' ? 'fa-arrow-up text-algae-green' : 'fa-arrow-down text-spunpearl']"
                       aria-hidden="true"
                     ></i>
                   </td>
