@@ -220,24 +220,27 @@
           </div>
           <div class="card-body px-0">
             <div id="chart-info" class="row px-1 mb-5 mb-lg-0">
-              <div class="d-none d-lg-block col-lg-1 pt-2">
-                <span class="h5">Total</span>
+              <div class="d-none d-lg-block col-xl-1 pt-2">
+                <span class="h5">Total:</span>
               </div>
-              <div class="col-6 col-lg-2 mb-2 mb-lg-0">
+              <div class="col-6 col-xl-1 px-0 mb-3 mb-xl-0 text-center">
                 <div class="custom-legend text-muted font-weight-bold">Sales</div>
-                <div class="badge badge-malibu py-2 px-3">Php 10, 000.00</div>
+                <div class="badge badge-legend badge-malibu py-2 px-1">Php 10, 000.00</div>
               </div>
-              <div class="col-6 col-lg-2 mb-2 mb-lg-0">
+              <div class="col-6 col-xl-1 px-0 mb-3 mb-xl-0 text-center">
                 <div class="custom-legend text-muted font-weight-bold">Revenue</div>
-                <div class="badge badge-algae-green py-2 px-3">Php 10, 000.00</div>
+                <div class="badge badge-legend badge-algae-green py-2 px-1">Php 10, 000.00</div>
               </div>
-              <div class="col-6 col-lg-2 mb-2 mb-lg-0">
+              <div class="col-6 col-xl-1 px-0 mb-3 mb-xl-0 text-center">
                 <div class="custom-legend text-muted font-weight-bold">Generated Points</div>
-                <div class="badge badge-biloba-flower py-2 px-3">1000 Points</div>
+                <div class="badge badge-legend badge-biloba-flower py-2 px-1">1000 Points</div>
               </div>
-              <div class="col-6 col-lg-2 mb-2 mb-lg-0">
+              <div class="col-6 col-xl-1 px-0 mb-3 mb-xl-0 text-center">
                 <div class="custom-legend text-muted font-weight-bold">Used Points</div>
-                <div class="badge badge-biloba-flower py-2 px-3">1000 Points</div>
+                <div class="badge badge-legend badge-biloba-flower py-2 px-1">1000 Points</div>
+              </div>
+              <div class="d-lg-none col-12 pt-2">
+                <span class="h5">Total:</span>
               </div>
             </div>
             <BarChart
